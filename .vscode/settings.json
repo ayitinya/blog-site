@@ -1,6 +1,7 @@
 {
-    "tailwindCSS.experimental.configFile": ".nuxt/tailwind.config.cjs",
+    "tailwindCSS.experimental.configFile": "./frontend/.nuxt/tailwind.config.cjs",
     "files.associations": {
         "*.css": "tailwindcss",
     },
+    "python.formatting.provider": "black",
 }
