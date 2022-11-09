@@ -8,10 +8,9 @@ const { data } = await useFetch<Blog[]>('/api/blogs/')
     <div class="h-full">
         <NuxtLayout name="custom">
             <template #left>
-                fsokof
             </template>
             <template #default>
-                <div class="p-4 bg-white rounded-lg border border-gray-200 mb-2" v-for="post of data">
+                <div class="px-4 pt-4" v-for="post of data">
                     <div class="flex">
                         <span class="">
                             <Icon name="fluent:person-12-filled" size="2.5rem" />
@@ -55,7 +54,6 @@ const { data } = await useFetch<Blog[]>('/api/blogs/')
                 </div>
             </template>
             <template #right>
-                fdadfad
             </template>
         </NuxtLayout>
     </div>
