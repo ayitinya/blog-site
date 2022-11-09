@@ -1,6 +1,6 @@
 <template>
     <div class="grid grid-cols-[minmax(auto,_20%)_minmax(min-content,_768px)_auto] grid-rows-[auto_1fr_auto] h-full">
-        <Navbar class="col-span-full mb-4 sticky top-0"/>
+        <Navbar class="col-span-full mb-4 sticky top-0" />
         <div class="col-start-1 col-end-2 pl-4">
             <slot name="left" />
         </div>
