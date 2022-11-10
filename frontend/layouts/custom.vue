@@ -4,7 +4,7 @@
         <div class="col-start-1 col-end-2 pl-4">
             <slot name="left" />
         </div>
-        <main class="col-start-2 col-end-3 max-w-3xl bg-white rounded-lg border border-gray-200">
+        <main class="col-start-2 col-end-3 max-w-3xl ">
             <slot />
         </main>
         <aside class="col-start-3 col-end-4 pr-4">
