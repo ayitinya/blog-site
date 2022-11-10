@@ -30,7 +30,7 @@ const post = () => {
 <template>
     <div>
         <NuxtLayout name="custom">
-            <div class="h-[calc(100vh_-_10rem)] overflow-y-auto bg-white rounded-lg border border-gray-400">
+            <div class="h-[calc(100vh_-_10rem)] overflow-y-auto bg-white rounded-lg">
                 <TextEditor v-model:body="body" v-model:title="title" v-model:subtitle="subtitle"
                     v-model:summary="summary" />
             </div>

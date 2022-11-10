@@ -6,6 +6,8 @@ import Underline from '@tiptap/extension-underline'
 import Image from '@tiptap/extension-image'
 import Typography from '@tiptap/extension-typography'
 
+// TODO: add image captions
+
 const props = defineProps<{
   title: string,
   subtitle: string,
@@ -81,7 +83,7 @@ function setLink() {
       :value="props.subtitle" @input="$emit('update:subtitle', ($event.target as HTMLInputElement).value)">
   </div>
 
-  <div class="bg-[#F3F3F3] mb-5 px-10 py-2 flex items-center fixed-menu sticky top-0 z-50" v-if="editor">
+  <div class="bg-[#F3F3F3] mb-5 px-10 py-2 flex items-center fixed-menu sticky top-0 z-50 border-gray-400 border" v-if="editor">
     <button @click="editor!.chain().focus().toggleHeading({ level: 2 }).run()"
       :class="{ 'is-active': editor.isActive('heading', { level: 2 }) }" class="mx-2">
       <Icon name="ri:h-2" size="1.5rem" />
