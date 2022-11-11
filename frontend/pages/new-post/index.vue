@@ -1,6 +1,6 @@
 <script setup lang="ts">
+import { Blog } from '~~/composables/types';
 import { baseURL } from '~~/server/utils/services';
-
 
 const title = ref("");
 const subtitle = ref("");
@@ -8,7 +8,7 @@ const body = ref("");
 const summary = ref("");
 
 const post = () => {
-    useFetch(`${baseURL}/blogs/`, {
+    useFetch<Blog>(`${baseURL}/blogs/`, {
         method: 'POST',
         key: body.value,
         headers: {
@@ -22,7 +22,8 @@ const post = () => {
             author: 1,
         })
     }).then((res) => {
-        console.log(res)
+        if (res.data.value)
+            useRouter().replace(`/posts/${res.data.value.id}`)
     })
 }
 </script>
