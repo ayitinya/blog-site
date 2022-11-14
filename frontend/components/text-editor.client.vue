@@ -76,14 +76,14 @@ function setLink() {
 </script>
 
 <template>
-  <div class="mb-5 px-10 pt-10">
+  <div class="mb-5 px-10 pt-10 flex flex-col prose md:prose-lg lg:prose-xl">
     <input class="focus-visible:outline-none text-5xl font-bold" type="text" placeholder="Post title"
       :value="props.title" @input="$emit('update:title', ($event.target as HTMLInputElement).value)" />
-    <input class="focus-visible:outline-none text-4xl font-semibold" type="text" name="" id="" placeholder="Subtitle"
+    <input class="focus-visible:outline-none text-4xl font-semibold " type="text" name="" id="" placeholder="Subtitle"
       :value="props.subtitle" @input="$emit('update:subtitle', ($event.target as HTMLInputElement).value)">
   </div>
 
-  <div class="bg-[#F3F3F3] mb-5 px-10 py-2 flex items-center fixed-menu sticky top-0 z-50 border-gray-400 border" v-if="editor">
+  <div class="bg-[#F3F3F3] mb-5 px-10 py-2 flex items-center fixed-menu sticky top-0 z-50 border-gray-400 border prose md:prose-lg lg:prose-xl" v-if="editor">
     <button @click="editor!.chain().focus().toggleHeading({ level: 2 }).run()"
       :class="{ 'is-active': editor.isActive('heading', { level: 2 }) }" class="mx-2">
       <Icon name="ri:h-2" size="1.5rem" />
@@ -134,7 +134,7 @@ function setLink() {
     </button>
   </div>
 
-  <div v-if="editor">
+  <div v-if="editor" class="prose md:prose-lg lg:prose-xl">
     <BubbleMenu class="bubble-menu" :tippy-options="{ duration: 100 }" :editor="editor">
       <button @click="editor!.chain().focus().toggleBold().run()" :class="{ 'is-active': editor.isActive('bold') }">
         Bold
@@ -167,7 +167,7 @@ function setLink() {
     </FloatingMenu>
   </div>
 
-  <EditorContent :editor="editor" class="mb-5 px-10" />
+  <EditorContent :editor="editor" class="mb-5 px-10 prose md:prose-lg lg:prose-xl" />
 
 </template>
 

@@ -8,6 +8,9 @@ export interface Blog {
     body: string
     created_at: string
     author: number
+
+    image?: string
+    summary?: string
 }
 
 export interface Author {
