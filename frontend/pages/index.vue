@@ -13,7 +13,7 @@ const { data } = await useFetch<Blog[]>('/api/blogs/')
                         <div class="flex md:flex-row flex-col">
                             <div v-if="post.image?.length" class="md:pr-4">
                                 <NuxtLink :to="`/posts/${post.id}`">
-                                    <img :src="post.image" class="h-80 md:w-32 md:h-32" />
+                                    <img :src="post.image" class="md:w-32 md:h-32" />
                                 </NuxtLink>
                             </div>
                             <div class="px-2 md:px-0">
