@@ -8,15 +8,15 @@ const { data } = await useFetch<Blog[]>('/api/blogs/')
     <div class="h-full">
         <NuxtLayout>
             <template #default>
-                <div class="p-8">
+                <div class="py-8 md:p-8">
                     <div class="py-4" v-for="post of data">
                         <div class="flex md:flex-row flex-col">
                             <div v-if="post.image?.length" class="md:pr-4">
                                 <NuxtLink :to="`/posts/${post.id}`">
-                                    <img :src="post.image" class="md:w-32 md:h-32" />
+                                    <img :src="post.image" class="h-80 md:w-32 md:h-32" />
                                 </NuxtLink>
                             </div>
-                            <div class="">
+                            <div class="px-2 md:px-0">
                                 <NuxtLink :to="`/posts/${post.id}`">
                                     <h1 class="text-2xl font-bold">{{ post.title }}</h1>
                                     <h2 class="text-xl font-light">{{ post.subtitle }}</h2>
