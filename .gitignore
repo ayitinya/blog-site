@@ -8,3 +8,11 @@ node_modules
 dist
 
 service-account.json
+
+# Default ignored files
+/shelf/
+/workspace.xml
+# Editor-based HTTP Client requests
+/httpRequests/
+
+.idea
