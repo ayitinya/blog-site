@@ -22,7 +22,7 @@ const { data } = await useFetch<Blog[]>('/api/blogs/')
                                     <h2 class="text-xl font-light">{{ post.subtitle }}</h2>
                                 </NuxtLink>
                                 <div class="font-thin text-gray-500 text-sm">
-                                    <span class="">by {{ post.first_name }} {{ post.last_name }}</span>
+                                    <NuxtLink :to="`/users/${post.author}`" class="">by {{ post.first_name }} {{ post.last_name }}</NuxtLink>
                                     <span class="mx-2">•</span>
                                     <span class="">
                                         {{ useDateFormat(post.created_at, 'MMM D', { locales: 'en-us' }).value }}

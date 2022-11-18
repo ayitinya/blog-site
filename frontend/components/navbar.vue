@@ -7,7 +7,7 @@ const focusOnSearchBox = () => {
 </script>
 
 <template>
-  <nav class="flex h-14 bg-white items-center">
+  <nav class="flex h-20 bg-black text-white items-center">
     <div class="col-start-1 col-end-2 pl-4">
       <NuxtLink to="/">
         <span>LOGO</span>
