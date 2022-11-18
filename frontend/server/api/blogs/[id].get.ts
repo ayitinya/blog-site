@@ -12,9 +12,7 @@ export default defineEventHandler(async event => {
 
     const window = new JSDOM('').window;
     const purify = DOMPurify(window as unknown as Window);
-    const cleanedHTML = purify.sanitize(parsedJSON);
-
-    res.body = cleanedHTML
+    res.body = purify.sanitize(parsedJSON);
 
     return res
 })

@@ -1,6 +1,6 @@
 from rest_framework import viewsets
-from blog.models import BlogPost
-from blog.serializers import BlogPostSerializer
+from .models import BlogPost
+from .serializers import BlogPostSerializer
 
 
 # Create your views here.
