@@ -19,7 +19,7 @@ watch(query, () => refresh())
     <NuxtLayout>
       <div class="p-5 md:p-10">
         <div class="flex flex-col items-center md:items-start md:flex-row">
-          <div class="flex flex-col w-full h-full flex justify-center">
+          <div class="flex flex-col w-full md:w-56 h-full flex justify-center md:shrink-0 md:grow-0">
             <img :src="data!.user.image" alt="User profile image">
             <div class="mt-2">
               <span class="font-bold">Contact</span>
@@ -31,7 +31,7 @@ watch(query, () => refresh())
             </div>
 
           </div>
-          <div class="md:pl-5 prose max-w-none">
+          <div class="md:pl-5 prose max-w-none md:grow-0">
             <h1 class="text-2xl font-bold">{{ data!.user.first_name }} {{ data!.user.last_name }}</h1>
             <p class="">
               {{ data!.user.bio }}
