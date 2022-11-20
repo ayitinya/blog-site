@@ -14,7 +14,10 @@ class UserProfileViewSet(viewsets.ModelViewSet):
     serializer_class = UserProfileSerializer
 
     @action(methods=["GET"], detail=True)
-    def blogs(self, request, pk=None):
-        blog_posts = BlogPost.objects.filter(author=pk)
-        serializer = BlogPostSerializer(blog_posts, many=True)
-        return Response(serializer.data)
+    def blogs(self, request, *args, pk=None, **kwargs):
+        limit = int(request.query_params.get("limit", 10))
+        offset = int(request.query_params.get("offset", 0))
+        queryset = BlogPost.objects.all()
+        blogs = queryset.filter(author=pk)
+        serializer = BlogPostSerializer(blogs[offset:offset+limit], many=True)
+        return Response({"count": blogs.count(), "next": True if len(blogs) > limit else False , "results": serializer.data})

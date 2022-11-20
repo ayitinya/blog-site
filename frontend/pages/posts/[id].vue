@@ -9,7 +9,7 @@ const { data } = await useFetch(`/api/blogs/${useRoute().params.id}`, { key: `bl
                 <h1 class="text-5xl font-bold">{{ data.title }}</h1>
                 <h2 class="font-light text-xl">{{ data.subtitle }}</h2>
                 <div class="flex text-gray-500 my-1">
-                  <NuxtLink :to="`/users/${data.author}`">
+                  <NuxtLink :to="`/authors/${data.author}`">
                     <span>by {{ data.first_name }} {{ data.last_name }}</span>
                   </NuxtLink>
                     <span class="mx-2">•</span>

@@ -9,8 +9,11 @@ export interface Blog {
     created_at: string
     author: number
 
-    image?: string
-    summary?: string
+    image: string
+    summary: string
+
+    tags: Tag[]
+
 }
 
 export interface Author {
@@ -19,4 +22,17 @@ export interface Author {
     email: string
     first_name: string
     last_name: string
+    image: string
+    bio: string
+    social_links: SocialLink[]
+}
+
+export interface SocialLink {
+    name: string
+    url: string
+}
+
+export interface Tag {
+    id: string
+    name: string
 }

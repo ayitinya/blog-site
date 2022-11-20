@@ -6,7 +6,7 @@ import parseJSONToHTML from "~~/server/utils/parseJSONToHTML"
 
 export default defineEventHandler(async event => {
     const query = event.context.params.id
-    const res = await $fetch<Blog>(`${baseURL}/blogs/${query}`)
+    const res = await $fetch<Blog>(`${baseURL}/blogs/${query}/`)
     const body = res.body
     const parsedJSON = parseJSONToHTML(body)
 

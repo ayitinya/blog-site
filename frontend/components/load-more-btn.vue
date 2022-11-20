@@ -1,0 +1,42 @@
+<script setup lang="ts">
+defineEmits(['click'])
+
+const props = withDefaults(defineProps<{ pending?: boolean }>(), { pending: false })
+</script>
+
+<template>
+    <button @click="$emit('click')" class="w-full bg-gray-300 py-2 my-4 flex items-center justify-center">
+        <span>Load More</span>
+        <div v-if="pending" class="lds-dual-ring"></div>
+    </button>
+</template>
+
+<style scoped lang="scss">
+.lds-dual-ring {
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+}
+
+.lds-dual-ring:after {
+    content: " ";
+    display: block;
+    width: 30px;
+    height: 30px;
+    margin: 8px;
+    border-radius: 50%;
+    border: 6px solid #fff;
+    border-color: #fff transparent #fff transparent;
+    animation: lds-dual-ring 1.2s linear infinite;
+}
+
+@keyframes lds-dual-ring {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+</style>

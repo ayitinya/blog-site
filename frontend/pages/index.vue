@@ -1,7 +1,13 @@
 <script setup lang="ts">
-import { Blog } from '~~/composables/types';
+const query = reactive(
+    {
+        limit: 10,
+        offset: 0,
+    }
+)
+const { data, refresh, pending } = await useFetch('/api/blogs/', { key: 'blogs', query: query });
 
-const { data } = await useFetch<Blog[]>('/api/blogs/')
+watch(query, () => refresh())
 </script>
 
 <template>
@@ -9,27 +15,17 @@ const { data } = await useFetch<Blog[]>('/api/blogs/')
         <NuxtLayout>
             <template #default>
                 <div class="py-8 md:p-8">
-                    <div class="py-4" v-for="post of data">
-                        <div class="flex md:flex-row flex-col">
-                            <div v-if="post.image?.length" class="md:pr-4">
-                                <NuxtLink :to="`/posts/${post.id}`">
-                                    <img :src="post.image" class="md:w-32 md:h-32" />
-                                </NuxtLink>
-                            </div>
-                            <div class="px-2 md:px-0">
-                                <NuxtLink :to="`/posts/${post.id}`">
-                                    <h1 class="text-2xl font-bold">{{ post.title }}</h1>
-                                    <h2 class="text-xl font-light">{{ post.subtitle }}</h2>
-                                </NuxtLink>
-                                <div class="font-thin text-gray-500 text-sm">
-                                    <NuxtLink :to="`/users/${post.author}`" class="">by {{ post.first_name }} {{ post.last_name }}</NuxtLink>
-                                    <span class="mx-2">•</span>
-                                    <span class="">
-                                        {{ useDateFormat(post.created_at, 'MMM D', { locales: 'en-us' }).value }}
-                                    </span>
-                                </div>
-                            </div>
+                    <div class="flex items-center py-4">
+                        <span class="text-2xl font-semibold min-w-fit pr-4 pl-5 md:pl-0">Latest Posts</span>
+                        <hr class="w-full">
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2  gap-5">
+                        <div v-for="blog in data!.results" :key="blog.id">
+                            <BlogCard :blog="blog" :display-author="true" />
                         </div>
+                    </div>
+                    <div class="flex justify-center">
+                        <LoadMoreBtn :pending="pending" v-if="data!.next" @click="query.limit += 10"/>
                     </div>
                 </div>
             </template>

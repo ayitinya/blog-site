@@ -1,11 +1,19 @@
-import {Blog} from "~~/composables/types"
-import {baseURL} from "~~/server/utils/services"
+import { Blog } from "~~/composables/types"
+import { baseURL } from "~~/server/utils/services"
 import parseBlog from "~/server/utils/parseBlog";
 
 export default defineEventHandler(async event => {
-    const data = await $fetch<Blog[]>(`${baseURL}/blogs/`)
+    interface Query {
+        count: string
+        next: string | null
+        previous: string | null
+        results: Blog[]
+    }
 
-    data.forEach((blog: Blog, index: number) => data[index] = parseBlog(blog))
+    const query = getQuery(event)
+    const data = await $fetch<Query>(`${baseURL}/blogs/`, { query: query })
+
+    data.results.forEach((blog: Blog, index: number) => data.results[index] = parseBlog(blog))
 
     return data
 })

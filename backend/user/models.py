@@ -5,9 +5,14 @@ from django.contrib.auth.models import AbstractUser
 
 
 class UserProfile(AbstractUser):
-    pass
+    bio = models.TextField(max_length=500, blank=True, default="")
+    image = models.ImageField(upload_to='profile_image', blank=True)
 
+    
+class SocialLink(models.Model):
+    name = models.CharField(max_length=20)
+    url = models.URLField()
+    user = models.ForeignKey(to=UserProfile, related_name="user_profile", on_delete=models.CASCADE)
 
-class SavedBlogs(models.Model):
-    blogs = models.ManyToManyField(to="blog.BlogPost")
-    user = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
+    def __str__(self):
+        return self.name
