@@ -22,7 +22,7 @@ const props = withDefaults(
       </div>
       <div class="p-5 overflow-y-auto lg:grow-0 flex flex-col h-full">
 
-        <h1 class="text-xl font-bold line-clamp-2">{{ props.blog.title }}</h1>
+        <span class="text-xl font-bold line-clamp-2">{{ props.blog.title }}</span>
         <p class="line-clamp-2 lg:line-clamp-3 lg:h-auto">
           {{ props.blog.summary }}
         </p>
