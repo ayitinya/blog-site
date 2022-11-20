@@ -2,11 +2,12 @@
 </script>
 
 <template>
-    <div class="flex flex-col items-center">
-        <Navbar class="col-span-full w-full mb-4 sticky top-0" />
+    <div class="flex flex-col items-center h-full">
+        <Navbar class="col-span-full w-full mb-4 sticky top-0 shrink-0 grow-0" />
         <div class="w-full xl:w-9/12 max-w-5xl">
             <slot />
         </div>
+        <Footer class="mt-auto w-full shrink-0 grow-0" />
     </div>
 </template>
 
