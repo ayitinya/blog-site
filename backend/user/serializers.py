@@ -11,9 +11,19 @@ class SocialLinkSerializer(serializers.ModelSerializer):
 
 class UserProfileSerializer(serializers.ModelSerializer):
     social_links = serializers.SerializerMethodField()
+
     class Meta:
         model = UserProfile
-        fields = ["id", "username", "email", "first_name", "last_name", "bio", "image", "social_links"]
+        fields = [
+            "id",
+            "username",
+            "email",
+            "first_name",
+            "last_name",
+            "bio",
+            "image",
+            "social_links",
+        ]
 
     def get_social_links(self, obj):
         queryset = SocialLink.objects.filter(user=obj.id)

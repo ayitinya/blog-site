@@ -19,5 +19,11 @@ class UserProfileViewSet(viewsets.ModelViewSet):
         offset = int(request.query_params.get("offset", 0))
         queryset = BlogPost.objects.all()
         blogs = queryset.filter(author=pk)
-        serializer = BlogPostSerializer(blogs[offset:offset+limit], many=True)
-        return Response({"count": blogs.count(), "next": True if len(blogs) > limit else False , "results": serializer.data})
+        serializer = BlogPostSerializer(blogs[offset : offset + limit], many=True)
+        return Response(
+            {
+                "count": blogs.count(),
+                "next": True if len(blogs) > limit else False,
+                "results": serializer.data,
+            }
+        )
