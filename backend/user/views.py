@@ -23,7 +23,7 @@ class UserProfileViewSet(viewsets.ModelViewSet):
         return Response(
             {
                 "count": blogs.count(),
-                "next": True if len(blogs) > limit else False,
+                "next": len(blogs) > limit,
                 "results": serializer.data,
             }
         )
