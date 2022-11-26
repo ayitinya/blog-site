@@ -24,7 +24,7 @@ export default defineEventHandler(async (event): Promise<{
                     "blogs": {
                         "count": values[0].count,
                         "next": values[0].next,
-                        "results": values[0].results.map((blog: Blog, index: number) => parseBlog(blog))
+                        "results": values[0].results.map((blog: Blog) => parseBlog(blog))
                     },
                     "user": values[1]
                 });
