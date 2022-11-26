@@ -25,6 +25,7 @@ class UserProfileSerializer(serializers.ModelSerializer):
             "social_links",
         ]
 
-    def get_social_links(self, obj):
+    @staticmethod
+    def get_social_links(obj):
         queryset = SocialLink.objects.filter(user=obj.id)
         return SocialLinkSerializer(queryset, many=True).data

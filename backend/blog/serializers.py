@@ -18,7 +18,8 @@ class BlogPostSerializer(serializers.ModelSerializer):
     last_name = serializers.CharField(source="author.last_name", read_only=True)
     tags = serializers.SerializerMethodField()
 
-    def get_tags(self, obj):
+    @staticmethod
+    def get_tags(obj):
         queryset = Tag.objects.filter(blogpost=obj.id)
         return TagSerializer(queryset, many=True).data
 
