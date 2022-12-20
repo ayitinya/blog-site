@@ -15,23 +15,23 @@ const props = withDefaults(
 
 <template>
   <NuxtLink :to="`/posts/${props.blog.id}`">
-    <div class="border h-96 lg:h-52 flex flex-col lg:flex-row">
-      <div class="h-52 lg:w-52 lg:grow-0 lg:shrink-0 flex">
-        <img :src="props.blog.image.length ? props.blog.image : `https://via.placeholder.com/200`" alt="Blog image"
-          class="w-full lg:h-full object-cover">
+    <div class="border h-96 flex flex-col ">
+      <div class="h-52  flex">
+        <img :src="props.blog.image.length ? props.blog.image : `https://via.placeholder.com/200`" :alt="props.blog.title"
+          class="w-full object-cover">
       </div>
-      <div class="p-5 overflow-y-auto lg:grow-0 flex flex-col h-full">
-
-        <span class="text-xl font-bold line-clamp-2">{{ props.blog.title }}</span>
-        <p class="line-clamp-2 lg:line-clamp-3 lg:h-auto">
-          {{ props.blog.summary }}
-        </p>
-        <div class="mt-auto font-thin text-gray-500 text-sm">
-          <div>
-            <span v-for="tag of props.blog.tags" class="text-sm font-thin bg-gray-100 px-2 rounded">
+      <div class="p-5 overflow-y-auto  flex flex-col h-full">
+        <div>
+            <span v-for="tag of props.blog.tags" class="text-sm font-thin">
               {{ tag.name }}
             </span>
           </div>
+        <span class="text-xl font-bold line-clamp-2">{{ props.blog.title }}</span>
+        <p class="line-clamp-2">
+          {{ props.blog.summary }}
+        </p>
+        <div class="mt-auto font-thin text-gray-500 text-sm">
+          
           <ClientOnly v-if="props.displayAuthor">
             <NuxtLink :to="`/authors/${props.blog.author}`">
               <span>by {{ props.blog.first_name }} {{ props.blog.last_name }}</span>

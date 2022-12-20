@@ -19,7 +19,7 @@ watch(query, () => refresh())
                         <span class="text-2xl font-semibold min-w-fit pr-4 pl-5 md:pl-0">Latest Posts</span>
                         <hr class="w-full">
                     </div>
-                    <div class="grid grid-cols-1 md:grid-cols-2  gap-5">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-5">
                         <div v-for="blog in data!.results" :key="blog.id">
                             <BlogCard :blog="blog" :display-author="true" />
                         </div>
