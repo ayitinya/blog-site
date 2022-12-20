@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { Blog } from '~~/composables/types';
-import { baseURL } from '~~/server/utils/services';
 
 const title = ref("");
 const subtitle = ref("");
@@ -8,7 +7,7 @@ const body = ref("");
 const summary = ref("");
 
 const post = () => {
-    useFetch<Blog>(`${baseURL}/blogs/`, {
+    useFetch<Blog>(`${useRuntimeConfig().public.apiURL}/blogs/`, {
         method: 'POST',
         key: body.value,
         headers: {

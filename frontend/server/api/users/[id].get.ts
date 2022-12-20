@@ -1,4 +1,3 @@
-import { baseURL } from "~/server/utils/services";
 import { Author, Blog } from "~/composables/types";
 import parseBlog from "~/server/utils/parseBlog";
 
@@ -14,8 +13,8 @@ export default defineEventHandler(async (event): Promise<{
 }> => {
     const query = getQuery(event)
 
-    const blogs = async () => await $fetch<Query>(`${baseURL}/users/${event.context.params.id}/blogs/`, { query: query });
-    const user = async () => await $fetch<Author>(`${baseURL}/users/${event.context.params.id}/`);
+    const blogs = async () => await $fetch<Query>(`${useRuntimeConfig().public.apiURL}/users/${event.context.params.id}/blogs/`, { query: query });
+    const user = async () => await $fetch<Author>(`${useRuntimeConfig().public.apiURL}/users/${event.context.params.id}/`);
     return await Promise
         .all([blogs(), user()])
         .then(
