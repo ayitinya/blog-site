@@ -1,4 +1,1 @@
-
-
-export const baseURL = 'https://rasulley.pythonanywhere.com/api/'
-// export const baseURL = 'http://localhost:8000/api'
+export const baseURL = process.env.API_URL || 'http://localhost:8000/api'
