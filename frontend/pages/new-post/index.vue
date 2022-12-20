@@ -34,8 +34,8 @@ const post = () => {
                     v-model:summary="summary" />
             </div>
             <div class="py-4 flex gap-4 prose md:prose-lg lg:prose-xl mx-auto">
-                <button @click="" type="button" class="border border-gray-500 px-2 py-1 rounded">Save Draft</button>
-                <button @click="" type="button" class="border border-gray-500 px-2 py-1 rounded">Preview</button>
+                <button @click="" type="button" class="border border-gray-500 px-2 py-1 rounded" disabled>Save Draft</button>
+                <button @click="" type="button" class="border border-gray-500 px-2 py-1 rounded" disabled>Preview</button>
                 <button @click="post" type="button"
                     class="ml-auto border border-gray-500 px-2 py-1 rounded">Publish</button>
             </div>
