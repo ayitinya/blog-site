@@ -59,7 +59,6 @@ class BlogPostTests(APITestCase):
         self.assertEqual(response.data["title"], "My first blogpost")
 
 
-
 class TagTests(APITestCase):
     def test_create_tag(self):
         url = reverse("tag-list")
