@@ -3,6 +3,7 @@ from rest_framework import status
 from rest_framework.test import APITestCase
 from .models import Tag, BlogPost
 
+
 # Create your tests here.
 class BlogPostTests(APITestCase):
     def test_create_blogpost(self):
